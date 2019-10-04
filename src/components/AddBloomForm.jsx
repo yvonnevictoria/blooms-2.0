@@ -7,6 +7,7 @@ import "../stylesheets/AddBloomForm.css"
 ;
 
 const AddBloomForm = () => {
+    const [bloomName, setBloomName] = useState({ value: '', error: null, edit: false });
     const [wateringFrequency, setWateringFrequency] = useState('');
     const [wateringLevel, setWateringLevel] = useState('');
     const [humidityPreference, setHumidityPreference] = useState('');
@@ -14,7 +15,7 @@ const AddBloomForm = () => {
     const [notes, setNotes] = useState('');
 
     const addBloom = () => {
-        console.log(wateringFrequency, wateringLevel, humidityPreference, sunlightPreference, notes);
+        console.log(bloomName, wateringFrequency, wateringLevel, humidityPreference, sunlightPreference, notes);
 
         return {
             wateringFrequency,
@@ -25,9 +26,30 @@ const AddBloomForm = () => {
         }
     };
 
+    const toggle = () => {
+        setBloomName({
+            ...bloomName,
+            edit: !bloomName.edit
+        });
+    };
+
+    const saveInput = value => {
+        console.log(value);
+        setBloomName({
+            ...bloomName,
+            value
+        });
+    };
+
     return (
         <div className="form-wrapper">
-            <HeadingEdit placeholder="Name of flower" />
+            <HeadingEdit
+                placeholder="Name of flower"
+                edit={bloomName.edit}
+                toggle={toggle}
+                inputId="plant-name"
+                inputOnChange={saveInput}
+            />
             <label>Watering frequency</label>
             <div className="form-element radio-chip-group">
                 <RadioChip
@@ -119,6 +141,7 @@ const AddBloomForm = () => {
                 ]}
                 onChangeHandler={e => setSunlightPreference(e.target.value)}
             />
+
             <TextInput
                 id="plant-notes"
                 name="plant-notes"
@@ -126,6 +149,7 @@ const AddBloomForm = () => {
                 className="text-input"
                 onChangeHandler={e => setNotes(e.target.value)}
             />
+
             <button type="btn" className="action-btn" onClick={addBloom}>Submit</button>
         </div>
     );
