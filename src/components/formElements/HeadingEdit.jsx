@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPen } from '@fortawesome/free-solid-svg-icons'
 
 const HeadingEdit = ({ placeholder}) => {
     let edit = false;
@@ -10,7 +12,7 @@ const HeadingEdit = ({ placeholder}) => {
                     <p>{placeholder}</p>
             }
             <button className="btn edit-btn" onClick={change}>
-                <i className="fa fa-pencil" aria-hidden="true"></i>
+                <FontAwesomeIcon icon={faPen} />
             </button>
         </div>
 
