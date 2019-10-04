@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 const HeadingEdit = ({ placeholder, edit, toggle, inputId, inputOnChange }) => {
-
     return (
         <div className="heading-edit">
             { edit

@@ -7,7 +7,7 @@ import "../stylesheets/AddBloomForm.css"
 ;
 
 const AddBloomForm = () => {
-    const [bloomName, setBloomName] = useState({ value: '', error: null, edit: false });
+    const [bloomName, setBloomName] = useState({ value: 'Name of flower', error: null, edit: false });
     const [wateringFrequency, setWateringFrequency] = useState('');
     const [wateringLevel, setWateringLevel] = useState('');
     const [humidityPreference, setHumidityPreference] = useState('');
@@ -44,7 +44,7 @@ const AddBloomForm = () => {
     return (
         <div className="form-wrapper">
             <HeadingEdit
-                placeholder="Name of flower"
+                placeholder={bloomName.value}
                 edit={bloomName.edit}
                 toggle={toggle}
                 inputId="plant-name"
