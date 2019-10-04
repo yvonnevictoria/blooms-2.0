@@ -145,12 +145,26 @@ const AddBloomForm = () => {
             <TextInput
                 id="plant-notes"
                 name="plant-notes"
-                label="Notes"
+                label="Notes (optional)"
                 className="text-input"
                 onChangeHandler={e => setNotes(e.target.value)}
             />
 
-            <button type="btn" className="action-btn" onClick={addBloom}>Submit</button>
+            <button
+                type="button"
+                className="action-btn"
+                onClick={addBloom}
+                disabled={!(
+                    bloomName.value.length
+                    && !bloomName.error
+                    && wateringFrequency.length
+                    && wateringLevel.length
+                    && humidityPreference.length
+                    && sunlightPreference.length
+                )}
+            >
+                Submit
+            </button>
         </div>
     );
 };

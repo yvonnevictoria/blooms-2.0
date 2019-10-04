@@ -125,3 +125,7 @@ label {
 .action-btn:hover {
     background-color: #ed7b11;
 }
+
+.action-btn:disabled {
+    background-color: #ffc295;
+}
