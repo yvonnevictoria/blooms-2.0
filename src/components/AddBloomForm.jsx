@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import { HeadingEdit } from "./formElements/HeadingEdit";
 import { TextInput } from "./formElements/TextInput";
 import { Dropdown } from "./formElements/Dropdown";
@@ -7,7 +7,23 @@ import "../stylesheets/AddBloomForm.css"
 ;
 
 const AddBloomForm = () => {
-    function print(val) { console.log(val.target.value) }
+    const [wateringFrequency, setWateringFrequency] = useState('');
+    const [wateringLevel, setWateringLevel] = useState('');
+    const [humidityPreference, setHumidityPreference] = useState('');
+    const [sunlightPreference, setSunlightPreference] = useState('');
+    const [notes, setNotes] = useState('');
+
+    const addBloom = () => {
+        console.log(wateringFrequency, wateringLevel, humidityPreference, sunlightPreference, notes);
+
+        return {
+            wateringFrequency,
+            wateringLevel,
+            humidityPreference,
+            sunlightPreference,
+            notes
+        }
+    };
 
     return (
         <div className="form-wrapper">
@@ -19,28 +35,28 @@ const AddBloomForm = () => {
                     name="plant-watering-frequency"
                     className="radio-chip"
                     label="Every day"
-                    onChangeHandler={print}
+                    onClick={e => setWateringFrequency(e.target.id)}
                 />
                 <RadioChip
                     id="plant-wf-2days"
                     name="plant-watering-frequency"
                     className="radio-chip"
                     label="Every 2-3 days"
-                    onChangeHandler={print}
+                    onClick={e => setWateringFrequency(e.target.id)}
                 />
                 <RadioChip
                     id="plant-wf-weekly"
                     name="plant-watering-frequency"
                     className="radio-chip"
                     label="Weekly"
-                    onChangeHandler={print}
+                    onClick={e => setWateringFrequency(e.target.id)}
                 />
                 <RadioChip
                     id="plant-wf-fortnightly"
                     name="plant-watering-frequency"
                     className="radio-chip"
                     label="Fortnightly"
-                    onChangeHandler={print}
+                    onClick={e => setWateringFrequency(e.target.id)}
                 />
             </div>
 
@@ -51,21 +67,21 @@ const AddBloomForm = () => {
                     name="plant-watering-level"
                     className="radio-chip"
                     label="Wet soil"
-                    onChangeHandler={print}
+                    onClick={e => setWateringLevel(e.target.id)}
                 />
                 <RadioChip
                     id="plant-wl-moist"
                     name="plant-watering-level"
                     className="radio-chip"
                     label="Moist soil"
-                    onChangeHandler={print}
+                    onClick={e => setWateringLevel(e.target.id)}
                 />
                 <RadioChip
                     id="plant--wl-light"
                     name="plant-watering-level"
                     className="radio-chip"
                     label="Lightly wet soil"
-                    onChangeHandler={print}
+                    onClick={e => setWateringLevel(e.target.id)}
                 />
             </div>
 
@@ -76,14 +92,14 @@ const AddBloomForm = () => {
                     name="plant-humidity"
                     className="radio-chip"
                     label="Yes, lots of moisture"
-                    onChangeHandler={print}
+                    onClick={e => setHumidityPreference(e.target.id)}
                 />
                 <RadioChip
                     id="plant-humidity-no"
                     name="plant-humidity"
                     className="radio-chip"
                     label="No, keep it dry"
-                    onChangeHandler={print}
+                    onClick={e => setHumidityPreference(e.target.id)}
                 />
             </div>
 
@@ -94,17 +110,23 @@ const AddBloomForm = () => {
                 className="dropdown"
                 options={[
                     {key: "", value: "Please select..."},
-                    {key: "a", value: "Direct sunlight"},
-                    {key: "b", value: "Part sun/Part shade"},
-                    {key: "c", value: "Bright, indirect sunlight"},
-                    {key: "d", value: "Indirect/filtered light"},
-                    {key: "e", value: "Low light"},
-                    {key: "f", value: "Other"}
+                    {key: "Direct sunlight", value: "Direct sunlight"},
+                    {key: "Part sun/Part shade", value: "Part sun/Part shade"},
+                    {key: "Bright, indirect sunlight", value: "Bright, indirect sunlight"},
+                    {key: "Indirect/filtered light", value: "Indirect/filtered light"},
+                    {key: "Low light", value: "Low light"},
+                    {key: "Other", value: "Other"}
                 ]}
-                onChangeHandler={print}
+                onChangeHandler={e => setSunlightPreference(e.target.value)}
             />
-            <TextInput id="plant-notes" name="plant-notes" label="Notes" className="text-input" onChangeHandler={print} />
-            <button type="btn" className="action-btn" onClick={print}>Submit</button>
+            <TextInput
+                id="plant-notes"
+                name="plant-notes"
+                label="Notes"
+                className="text-input"
+                onChangeHandler={e => setNotes(e.target.value)}
+            />
+            <button type="btn" className="action-btn" onClick={addBloom}>Submit</button>
         </div>
     );
 };
