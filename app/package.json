@@ -11,24 +11,24 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "@babel/cli": "^7.1.0",
-        "@babel/core": "^7.1.0",
-        "@babel/preset-env": "^7.1.0",
-        "@babel/preset-react": "^7.0.0",
-        "babel-loader": "^8.0.2",
-        "css-loader": "^1.0.0",
-        "react": "^16.5.2",
-        "react-dom": "^16.5.2",
-        "style-loader": "^0.23.0",
-        "webpack": "^4.19.1",
-        "webpack-cli": "^3.1.1",
+        "@babel/cli": "^7.6.4",
+        "@babel/core": "^7.6.4",
+        "@babel/preset-env": "^7.6.3",
+        "@babel/preset-react": "^7.6.3",
+        "babel-loader": "^8.0.6",
+        "css-loader": "^1.0.1",
+        "react": "^16.10.2",
+        "react-dom": "^16.10.2",
+        "style-loader": "^0.23.1",
+        "webpack": "^4.41.2",
+        "webpack-cli": "^3.3.9",
         "webpack-dev-server": "^3.8.2"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.25",
         "@fortawesome/free-solid-svg-icons": "^5.11.2",
-        "@fortawesome/react-fontawesome": "^0.1.5",
+        "@fortawesome/react-fontawesome": "^0.1.6",
         "@hot-loader/react-dom": "^16.9.0",
-        "react-hot-loader": "^4.3.11"
+        "react-hot-loader": "^4.12.15"
     }
 }

@@ -15,8 +15,6 @@ const AddBloomForm = () => {
     const [notes, setNotes] = useState('');
 
     const addBloom = () => {
-        console.log(bloomName, wateringFrequency, wateringLevel, humidityPreference, sunlightPreference, notes);
-
         return {
             wateringFrequency,
             wateringLevel,
@@ -26,29 +24,14 @@ const AddBloomForm = () => {
         }
     };
 
-    const toggle = () => {
-        setBloomName({
-            ...bloomName,
-            edit: !bloomName.edit
-        });
-    };
-
-    const saveInput = value => {
-        console.log(value);
-        setBloomName({
-            ...bloomName,
-            value
-        });
-    };
-
     return (
         <div className="form-wrapper">
             <HeadingEdit
                 placeholder={bloomName.value}
                 edit={bloomName.edit}
-                toggle={toggle}
+                toggle={() => setBloomName({ ...bloomName, edit: !bloomName.edit })}
                 inputId="plant-name"
-                inputOnChange={saveInput}
+                inputOnChange={value => setBloomName({ ...bloomName, value })}
             />
             <label>Watering frequency</label>
             <div className="form-element radio-chip-group">
