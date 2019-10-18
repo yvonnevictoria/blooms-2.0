@@ -1,4 +1,6 @@
 'use strict';
+const HelloWorldHandler = require('./handlers/helloWorldHandler');
+const BloomHandler = require('./handlers/bloomHandler');
 
 const Hapi = require('@hapi/hapi');
 
@@ -6,16 +8,22 @@ const init = async () => {
 
     const server = Hapi.server({
         port: 4000,
-        host: 'localhost'
+        host: 'localhost',
+        routes: {
+            cors: true
+        }
     });
 
     server.route({
         method: 'GET',
         path: '/',
-        handler: (request, h) => {
+        handler: HelloWorldHandler.hello
+    });
 
-            return 'Hello World!';
-        }
+    server.route({
+        method: 'POST',
+        path: '/add',
+        handler: BloomHandler.add
     });
 
     await server.start();

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { HeadingEdit } from "./formElements/HeadingEdit";
 import { TextInput } from "./formElements/TextInput";
 import { Dropdown } from "./formElements/Dropdown";
@@ -15,13 +16,22 @@ const AddBloomForm = () => {
     const [notes, setNotes] = useState('');
 
     const addBloom = () => {
-        return {
+        const payload = {
             wateringFrequency,
             wateringLevel,
             humidityPreference,
             sunlightPreference,
             notes
-        }
+        };
+
+        axios.post('http://localhost:4000/add', payload)
+          .then(function (response) {
+            console.log(response);
+            // change page
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     };
 
     return (
