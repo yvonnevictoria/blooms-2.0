@@ -17,6 +17,7 @@ const AddBloomForm = () => {
 
     const addBloom = () => {
         const payload = {
+            name: bloomName,
             wateringFrequency,
             wateringLevel,
             humidityPreference,

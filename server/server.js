@@ -26,6 +26,12 @@ const init = async () => {
         handler: BloomHandler.add
     });
 
+    server.route({
+        method: 'GET',
+        path: '/get',
+        handler: BloomHandler.get
+    });
+
     await server.start();
     console.log('Server running on %s', server.info.uri);
 };
