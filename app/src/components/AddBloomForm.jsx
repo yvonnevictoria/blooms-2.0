@@ -4,24 +4,23 @@ import { HeadingEdit } from "./formElements/HeadingEdit";
 import { TextInput } from "./formElements/TextInput";
 import { Dropdown } from "./formElements/Dropdown";
 import { RadioChip } from "./formElements/RadioChip";
-import "../stylesheets/AddBloomForm.css"
-;
+import "../stylesheets/AddBloomForm.css";
 
 const AddBloomForm = () => {
     const [bloomName, setBloomName] = useState({ value: 'Name of flower', error: null, edit: false });
     const [wateringFrequency, setWateringFrequency] = useState('');
     const [wateringLevel, setWateringLevel] = useState('');
-    const [humidityPreference, setHumidityPreference] = useState('');
-    const [sunlightPreference, setSunlightPreference] = useState('');
+    const [humidity, setHumidity] = useState('');
+    const [sunlight, setSunlight] = useState('');
     const [notes, setNotes] = useState('');
 
     const addBloom = () => {
         const payload = {
-            name: bloomName,
+            name: bloomName.value,
             wateringFrequency,
             wateringLevel,
-            humidityPreference,
-            sunlightPreference,
+            humidity,
+            sunlight,
             notes
         };
 
@@ -104,18 +103,18 @@ const AddBloomForm = () => {
             <label>Likes humidity?</label>
             <div className="form-element radio-chip-group">
                 <RadioChip
-                    id="plant-humidity-yes"
+                    id="1"
                     name="plant-humidity"
                     className="radio-chip"
                     label="Yes, lots of moisture"
-                    onClick={e => setHumidityPreference(e.target.id)}
+                    onClick={e => setHumidity(e.target.id)}
                 />
                 <RadioChip
-                    id="plant-humidity-no"
+                    id="0"
                     name="plant-humidity"
                     className="radio-chip"
                     label="No, keep it dry"
-                    onClick={e => setHumidityPreference(e.target.id)}
+                    onClick={e => setHumidity(e.target.id)}
                 />
             </div>
 
@@ -133,7 +132,7 @@ const AddBloomForm = () => {
                     {key: "Low light", value: "Low light"},
                     {key: "Other", value: "Other"}
                 ]}
-                onChangeHandler={e => setSunlightPreference(e.target.value)}
+                onChangeHandler={e => setSunlight(e.target.value)}
             />
 
             <TextInput
@@ -149,12 +148,12 @@ const AddBloomForm = () => {
                 className="action-btn"
                 onClick={addBloom}
                 disabled={!(
-                    bloomName.value.length
+                bloomName.value.length && bloomName.value != "Name of flower"
                     && !bloomName.error
                     && wateringFrequency.length
                     && wateringLevel.length
-                    && humidityPreference.length
-                    && sunlightPreference.length
+                    && humidity.length
+                    && sunlight.length
                 )}
             >
                 Submit
