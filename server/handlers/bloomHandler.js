@@ -12,14 +12,7 @@ module.exports = {
             sunlight,
             notes
         } = request.payload;
-        console.log({
-            name,
-            wateringFrequency,
-            wateringLevel,
-            humidity,
-            sunlight,
-            notes
-        });
+
         try {
             await knex('bloom')
                 .insert({
