@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
 import { BloomCard } from './BloomCard';
+import { Link } from "react-router-dom";
 
 const DisplayBlooms = () => {
     const [blooms, setBlooms] = useState([]);
@@ -35,7 +36,7 @@ const DisplayBlooms = () => {
                 ))
             }
             <button onClick={() => {console.log(blooms)}}>Log blooms</button>
-
+            <Link to="/add">Home</Link>
         </Fragment>
     );
 };
