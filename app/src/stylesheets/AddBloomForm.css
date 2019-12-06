@@ -71,6 +71,15 @@ label {
     min-height: 100px;
 }
 
+.back-btn {
+    background-color: #fff;
+    border: none;
+    font-size: 25px;
+    color: #ff9748;
+    margin-left: 20px;
+    margin-top: 25px;
+}
+
 .radio-chip  {
   margin: 0 8px 8px 0;
 }

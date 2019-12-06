@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { BloomCard } from './BloomCard';
 import { Link } from "react-router-dom";
@@ -6,6 +7,7 @@ import { Link } from "react-router-dom";
 const DisplayBlooms = () => {
     const [blooms, setBlooms] = useState([]);
     const [errors, setErrors] = useState([]);
+    const history = useHistory();
 
     useEffect(() => {
         axios.get('http://localhost:4000/getAll')
@@ -22,21 +24,23 @@ const DisplayBlooms = () => {
     return (
         <Fragment>
             <h1>Blooms</h1>
-            {
-                blooms.map(({ id, name, wateringFrequency, wateringLevel, humidity, sunlight, notes }) => (
-                    <BloomCard
-                        bloomId={id}
-                        bloomName={name}
-                        wateringFrequency={wateringFrequency}
-                        wateringLevel={wateringLevel}
-                        humidity={humidity}
-                        sunlight={sunlight}
-                        notes={notes}
-                    />
-                ))
-            }
+            <div className="bloom-card-holder">
+                {
+                    blooms.map(({ id, name, wateringFrequency, wateringLevel, humidity, sunlight, notes }) => (
+                        <BloomCard
+                            bloomId={id}
+                            bloomName={name}
+                            wateringFrequency={wateringFrequency}
+                            wateringLevel={wateringLevel}
+                            humidity={humidity}
+                            sunlight={sunlight}
+                            notes={notes}
+                        />
+                    ))
+                }
+            </div>
             <button onClick={() => {console.log(blooms)}}>Log blooms</button>
-            <Link to="/add">Home</Link>
+            <button onClick={() => history.push("/add")}>Add blooms</button>
         </Fragment>
     );
 };

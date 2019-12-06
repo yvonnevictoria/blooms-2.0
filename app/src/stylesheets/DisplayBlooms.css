@@ -1,5 +1,35 @@
+h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.bloom-card-holder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .bloom-card {
-    width: 200px;
+    margin: 10px;
+    width: 250px;
     height: 200px;
     background: pink;
+    border: 25px solid pink;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+}
+
+.bloom-card .bloom-name {
+    font-weight: bold;
+    font-size: 20px;
+    align-self: start;
+}
+
+div.desc {
+    align-self: start;
+    margin: 5px 0;
+    text-transform: capitalize;
 }
