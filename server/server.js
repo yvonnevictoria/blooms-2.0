@@ -38,6 +38,13 @@ const init = async () => {
         handler: BloomHandler.getAll
     });
 
+    server.route({
+        method: 'DELETE',
+        path: '/delete',
+        handler: BloomHandler.delete
+    });
+
+
     await server.start();
     console.log('Server running on %s', server.info.uri);
 };

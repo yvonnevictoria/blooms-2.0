@@ -12,24 +12,73 @@ h1 {
 
 .bloom-card {
     margin: 10px;
-    width: 250px;
-    height: 200px;
-    background: pink;
-    border: 25px solid pink;
+    width: 350px;
+    height: 175px;
+    background: white;
+    border: 25px solid white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 2px 2px 0 rgba(0, 0, 0, 0.03), 0 0 2px 0 rgba(0, 0, 0, 0.03);
     display: flex;
     flex-direction: column;
-    align-items: center;
     overflow: scroll;
 }
 
 .bloom-card .bloom-name {
     font-weight: bold;
-    font-size: 20px;
-    align-self: start;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Rubik-Medium', sans-serif;
+    margin-bottom: 16px;
+}
+
+.bloom-card:hover .bloom-name {
+    color: #ff9748;
 }
 
 div.desc {
-    align-self: start;
-    margin: 5px 0;
+    position: relative;
+    margin: 0 0 8px 0;
     text-transform: capitalize;
+    font-size: 14px;
+    font-family: 'Rubik-Light', sans-serif;
+    width: 100%;
+    display: flex;
+}
+
+.desc .content {
+    position: absolute;
+    color: #736678;
+    right: 0;
+    width: 56%;
+}
+
+.desc.bloom-notes .content {
+    max-width: 210px;
+}
+
+.bloom-card .menu-btn {
+    display: none;
+    position: relative;
+}
+
+.bloom-card:hover .menu-btn {
+    display: inline;
+    background-color: #f2f2f2;
+    border: none;
+    font-size: 12px;
+    color: #000;
+    min-height: 25px;
+}
+
+.flex-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.menu-options {
+    width: 50px;
+    height: 20px;
+    position: absolute;
 }

@@ -39,5 +39,22 @@ module.exports = {
     getAll: async (request, h) => {
         return knex.select()
             .from('bloom');
+    },
+    delete: async (request, h) => {
+        console.log(request);
+        const { id, name } = request.payload;
+
+        try {
+            await knex('bloom')
+                .where({
+                    name,
+                    id
+                }).del();
+        } catch (err) {
+            console.log(err);
+            throw new Error('delete failed');
+        }
+
+        return h.response().code(200);
     }
 };

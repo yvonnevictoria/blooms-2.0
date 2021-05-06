@@ -9,6 +9,10 @@ import { Dropdown } from "./formElements/Dropdown";
 import { RadioChip } from "./formElements/RadioChip";
 import "../stylesheets/AddBloomForm.css";
 
+// TODO: Update design of name input and button being disabled with no error msg.
+// Not clear you can edit header wbich leads to confusion about why you can't submit.
+
+
 const AddBloomForm = () => {
     const [bloomName, setBloomName] = useState({ value: 'Name of flower', error: null, edit: false });
     const [wateringFrequency, setWateringFrequency] = useState('');
@@ -102,7 +106,7 @@ const AddBloomForm = () => {
                         onClick={e => setWateringLevel(e.target.id)}
                     />
                     <RadioChip
-                        id="plant--wl-light"
+                        id="plant-wl-light"
                         name="plant-watering-level"
                         className="radio-chip"
                         label="Lightly wet soil"

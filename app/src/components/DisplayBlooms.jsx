@@ -9,7 +9,7 @@ const DisplayBlooms = () => {
     const [errors, setErrors] = useState([]);
     const history = useHistory();
 
-    useEffect(() => {
+    const getBlooms = () => {
         axios.get('http://localhost:4000/getAll')
             .then(function (response) {
                 const { data } = response;
@@ -19,6 +19,10 @@ const DisplayBlooms = () => {
               console.log(error);
               setErrors(error);
             });
+    };
+
+    useEffect(() => {
+        getBlooms();
     }, []);
 
     return (
@@ -35,6 +39,7 @@ const DisplayBlooms = () => {
                             humidity={humidity}
                             sunlight={sunlight}
                             notes={notes}
+                            getBlooms={() => getBlooms()}
                         />
                     ))
                 }
